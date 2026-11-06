@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarePath – Healthcare Journey Navigator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="offlineBanner" class="offline-banner" role="status" hidden>
+        You are offline. Showing information saved on this device.
+    </div>
+
+    <!-- ============ NAVIGATION ============ -->
+    <header class="topbar">
+        <div class="brand">
+            <span class="logo" aria-hidden="true">+</span>
+            <div>
+                <h1>CarePath</h1>
+                <p class="tagline" data-i18n="tagline">Healthcare made easier, one step at a time.</p>
+            </div>
+        </div>
+
+        <nav class="top-links" aria-label="Page sections">
+            <a href="#how">How it works</a>
+            <a href="#features">Features</a>
+            <a href="#safety">Safety</a>
+        </nav>
+
+        <div class="top-controls">
+            <div class="font-controls" role="group" aria-label="Text size">
+                <button id="fontDown" class="icon-btn" type="button" aria-label="Decrease text size">A−</button>
+                <button id="fontUp" class="icon-btn" type="button" aria-label="Increase text size">A+</button>
+            </div>
+            <select id="langSelect" class="lang-select" aria-label="Interface language">
+                <option value="en">English</option>
+                <option value="ta">தமிழ்</option>
+            </select>
+            <button id="logoutBtn" class="btn ghost small" type="button" data-i18n="logout" hidden>Log out</button>
+            <a href="#start" class="btn primary small nav-cta" id="navCta">Get started</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- ============ LANDING + LOGIN ============ -->
+        <section id="authView">
+
+            <div class="hero">
+                <div class="hero-copy">
+                    <span class="eyebrow">Patient journey navigator</span>
+                    <h2 class="hero-title">Find care, book with confidence, <span>stay prepared.</span></h2>
+                    <p class="hero-sub">
+                        CarePath matches you with suitable facilities, confirms bookings only when
+                        your documents are complete, and keeps your next step clear at every stage.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#start" class="btn primary">Get started</a>
+                        <a href="#how" class="btn ghost">See how it works</a>
+                    </div>
+                    <ul class="hero-points">
+                        <li>Administrative navigation, not medical advice</li>
+                        <li>Explainable matching with clear reasons</li>
+                        <li>Built for accessibility and multiple languages</li>
+                    </ul>
+                </div>
+
+                <div class="auth-card" id="start">
+                    <span class="badge">Synthetic demo</span>
+                    <h2 data-i18n="loginTitle">Create your CarePath profile</h2>
+                    <p class="muted small" data-i18n="loginSub">Used only to match services and confirm bookings. Stored
+                        on this device.</p>
+
+                    <form id="loginForm" novalidate>
+                        <div class="field">
+                            <label for="fName" data-i18n="name">Full name</label>
+                            <input id="fName" name="name" type="text" autocomplete="name"
+                                placeholder="e.g. Priya Sharma" required>
+                            <small class="err" id="errName" aria-live="polite"></small>
+                        </div>
+
+                        <div class="grid-2">
+                            <div class="field">
+                                <label for="fAge" data-i18n="age">Age</label>
+                                <input id="fAge" name="age" type="number" min="1" max="120" placeholder="e.g. 34"
+                                    required>
+                                <small class="err" id="errAge" aria-live="polite"></small>
+                            </div>
+                            <div class="field">
+                                <label for="fLang" data-i18n="prefLang">Preferred language</label>
+                                <select id="fLang" name="lang">
+                                    <option value="en">English</option>
+                                    <option value="ta">தமிழ் (Tamil)</option>
+                                    <option value="hi">हिन्दी (Hindi)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="fMobile" data-i18n="mobile">Mobile number</label>
+                            <input id="fMobile" name="mobile" type="tel" inputmode="numeric" maxlength="10"
+                                placeholder="10-digit mobile number" autocomplete="tel" required>
+                            <small class="err" id="errMobile" aria-live="polite"></small>
+                        </div>
+
+                        <div class="field">
+                            <label for="fEmail" data-i18n="email">Email ID</label>
+                            <input id="fEmail" name="email" type="email" autocomplete="email"
+                                placeholder="name@example.com" required>
+                            <small class="err" id="errEmail" aria-live="polite"></small>
+                        </div>
+
+                        <p class="notice warn small">
+                            Do not enter real personal or medical information in this demo.
+                        </p>
+
+                        <button class="btn primary block" type="submit" data-i18n="continue">Continue</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- How it works -->
+            <section class="band" id="how">
+                <div class="section-head">
+                    <h2>How it works</h2>
+                    <p class="muted">Four steps from first search to a confirmed appointment.</p>
+                </div>
+                <div class="how-grid">
+                    <article class="how-card accent-indigo">
+                        <span class="how-num">01</span>
+                        <h3>Find care</h3>
+                        <p>Search by service, language, and wheelchair access. Facilities are ranked with reasons.</p>
+                    </article>
+                    <article class="how-card accent-mint">
+                        <span class="how-num">02</span>
+                        <h3>Book a slot</h3>
+                        <p>Pick an open time. The slot is checked again at the moment you book.</p>
+                    </article>
+                    <article class="how-card accent-amber">
+                        <span class="how-num">03</span>
+                        <h3>Upload documents</h3>
+                        <p>See exactly what is missing. The booking confirms once everything is in.</p>
+                    </article>
+                    <article class="how-card accent-violet">
+                        <span class="how-num">04</span>
+                        <h3>Stay on track</h3>
+                        <p>Your journey tracker shows the next step, and the help desk is one click away.</p>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Features -->
+            <section class="band alt" id="features">
+                <div class="section-head">
+                    <h2>Everything for your healthcare journey</h2>
+                    <p class="muted">Designed to remove friction at each step.</p>
+                </div>
+                <div class="feature-grid">
+                    <div class="feature">
+                        <h3>Smart facility finder</h3>
+                        <p>Matches services, distance, language, and accessibility, with transparent scoring.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>Appointment navigator</h3>
+                        <p>Live slot checks and protection against double booking.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>Document assistant</h3>
+                        <p>Checklists per service, with missing and uploaded status shown clearly.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>Journey tracker</h3>
+                        <p>A step-by-step timeline showing your next action.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>Multilingual support</h3>
+                        <p>English and Tamil interface, with Hindi available for preferences.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>Human help desk</h3>
+                        <p>Conflicting or incomplete information goes to a person, not a guess.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Safety -->
+            <section class="band safety" id="safety">
+                <h2>Built with safety in mind</h2>
+                <div class="safety-grid">
+                    <p>CarePath handles administrative steps only. It does not diagnose, recommend treatment, or make
+                        clinical decisions.</p>
+                    <p>Clinical questions go to a qualified healthcare professional. In an emergency, call
+                        <strong>112</strong>.
+                    </p>
+                </div>
+            </section>
+        </section>
+
+        <!-- ============ MAIN APP ============ -->
+        <section id="appView" hidden>
+            <div class="hello card">
+                <div>
+                    <h2 id="greeting">Hello</h2>
+                    <p class="muted small" id="profileSummary"></p>
+                </div>
+                <div class="next-box" aria-live="polite">
+                    <strong id="nextStepText">Next step</strong>
+                </div>
+            </div>
+
+            <nav class="tabs" role="tablist" aria-label="CarePath sections">
+                <button class="tab active" role="tab" data-tab="find" aria-selected="true" data-i18n="tabFind">Find
+                    Care</button>
+                <button class="tab" role="tab" data-tab="appointments" aria-selected="false"
+                    data-i18n="tabAppts">Appointments</button>
+                <button class="tab" role="tab" data-tab="documents" aria-selected="false"
+                    data-i18n="tabDocs">Documents</button>
+                <button class="tab" role="tab" data-tab="journey" aria-selected="false"
+                    data-i18n="tabJourney">Journey</button>
+                <button class="tab" role="tab" data-tab="help" aria-selected="false" data-i18n="tabHelp">Help
+                    Desk</button>
+            </nav>
+
+            <!-- Find Care -->
+            <section id="panel-find" class="panel">
+                <form id="searchForm" class="filters card">
+                    <div class="field">
+                        <label for="sService" data-i18n="service">Service</label>
+                        <select id="sService"></select>
+                    </div>
+                    <div class="field">
+                        <label for="sLang" data-i18n="language">Language</label>
+                        <select id="sLang"></select>
+                    </div>
+                    <div class="field">
+                        <label for="sDays" data-i18n="withinDays">Within</label>
+                        <select id="sDays">
+                            <option value="1">1 day</option>
+                            <option value="3" selected>3 days</option>
+                            <option value="7">7 days</option>
+                        </select>
+                    </div>
+                    <label class="check">
+                        <input type="checkbox" id="sWheel">
+                        <span data-i18n="wheelchair">Needs wheelchair access</span>
+                    </label>
+                    <button class="btn primary" type="submit" data-i18n="search">Search</button>
+                </form>
+
+                <p class="muted small" id="findHint"></p>
+                <p class="notice small">
+                    Recommendations are administrative and preference-based, not clinical.
+                    Clinical decisions remain with healthcare providers.
+                </p>
+                <div id="findResults" class="cards"></div>
+            </section>
+
+            <!-- Appointments -->
+            <section id="panel-appointments" class="panel" hidden>
+                <div id="bookingsList" class="cards"></div>
+
+                <div class="card demo-box">
+                    <h3>Concurrency and retry test (demo)</h3>
+                    <p class="muted small">
+                        Simulates two patients booking the same free slot at the same time, and a duplicate submission
+                        with the same request ID.
+                    </p>
+                    <div class="actions">
+                        <button id="simRaceBtn" class="btn small" type="button">Two patients, same slot</button>
+                        <button id="simDupBtn" class="btn small" type="button">Duplicate submission</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Documents -->
+            <section id="panel-documents" class="panel" hidden>
+                <p class="notice small">
+                    Demo: only each file's name is stored on this device. Files are not uploaded anywhere.
+                </p>
+                <div id="docsList" class="cards"></div>
+            </section>
+
+            <!-- Journey -->
+            <section id="panel-journey" class="panel" hidden>
+                <div class="grid-2 journey-grid">
+                    <div class="card">
+                        <h3>Your journey</h3>
+                        <ol id="journeySteps" class="timeline"></ol>
+                    </div>
+                    <div class="card">
+                        <h3>Next appointment</h3>
+                        <div id="nextBooking"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Help Desk -->
+            <section id="panel-help" class="panel" hidden>
+                <div class="grid-2 journey-grid">
+                    <div class="card">
+                        <h3 data-i18n="helpTitle">Get human help</h3>
+                        <p class="muted small">
+                            Conflicting or incomplete information is handed to a human agent rather than guessed.
+                        </p>
+                        <form id="ticketForm" novalidate>
+                            <div class="field">
+                                <label for="tTopic" data-i18n="topic">Topic</label>
+                                <select id="tTopic">
+                                    <option>Missing information</option>
+                                    <option>Conflicting information</option>
+                                    <option>Accessibility help</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <div class="field">
+                                <label for="tMessage" data-i18n="message">Message</label>
+                                <textarea id="tMessage" rows="4"
+                                    placeholder="Describe what you need help with"></textarea>
+                            </div>
+                            <button class="btn primary" type="submit" data-i18n="submitTicket">Send request</button>
+                        </form>
+                    </div>
+
+                    <div class="card">
+                        <h3>Your requests</h3>
+                        <ul id="ticketsList" class="ticket-list"></ul>
+                        <div class="contact">
+                            <strong>Help desk (demo)</strong>
+                            <p class="muted small">Phone: 1800-000-0000 · Mon–Sat, 9:00–18:00 · synthetic number</p>
+                            <p class="muted small">Emergency: call 112 or go to the nearest emergency department.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <!-- Slot picker dialog -->
+    <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+        <div class="modal-card">
+            <div class="modal-head">
+                <h3 id="modalTitle"></h3>
+                <button id="modalClose" class="icon-btn" type="button" aria-label="Close">×</button>
+            </div>
+            <p id="modalSub" class="muted small"></p>
+            <div id="slotList"></div>
+        </div>
+    </div>
+
+    <div id="toasts" class="toasts" aria-live="polite"></div>
+
+    <footer class="footer">
+        <p>Synthetic demo data · Administrative navigation only · Not medical advice.</p>
+        <p>Clinical questions go to a qualified healthcare professional. In an emergency, call 112.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
